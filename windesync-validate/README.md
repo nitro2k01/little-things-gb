@@ -11,7 +11,7 @@ At the time of writing, the only emulators known to emulate this quirk are [BGB]
 ## Building
 Prerequisite: some recent version of RGBDS. Under Linux and presumably macOS, just run `./m.sh`. No Makefile, sorry. Maybe one day. Under Windows it should not be too hard to make a `m.bat` file that executes the same commands as `./m.sh`.
 
-If you are just looking for the 
+If you are just looking for the ROM, go to [releases](https://github.com/nitro2k01/little-things-gb/releases/).
 
 ## Summary of the glitch
 The following applies only to pre-GBC hardware. It may reportedly be dependent on the SoC revision and LCD, although from what I've seen so far this seems unlikely.
