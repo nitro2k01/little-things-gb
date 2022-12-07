@@ -86,7 +86,7 @@ This image shows an incorrect implementation of the glitch in SameBoy during dev
 
 ### Limitations of the test ROM
 
-One limitation is that it doesn't exhaustively check every combination of `SCX` and `WX`. This would not be possible in a ROM that shows a single static image. Another limitation is that it modifies `SCX` and `WX` in the HBlank period and does not attempt test timing behavior of writing to IO registers close to the point in time where the glitch would happen. Yet another limitation is that this ROM does not 
+One limitation is that it doesn't exhaustively check every combination of `SCX` and `WX`. This would not be possible in a ROM that shows a single static image. Another limitation is that it modifies `SCX` and `WX` in the HBlank period and does not attempt test timing behavior of writing to IO registers close to the point in time where the glitch would happen. Yet another limitation is that this ROM does not other colors than black for the glitch pixel, meaning that an emulator that drew glitch pixels as black instead of the color 0 in BGP would appear to pass.
 
 ## Version history
 
