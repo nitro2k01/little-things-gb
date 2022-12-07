@@ -1,4 +1,7 @@
 # Windesync-validate
+
+![Windesync-validate running in BGB screenshot](images/screenshot.png)
+
 Windesync is a validation ROM for emulator authors wishing to implement a certain harware quirk present on pre-GBC Gameboys, and (re-)discovered because some graphics in a screen in the game *Star Trek 25th Anniversary* were misaligned by one pixel in emulators.
 
 If a program running on the Gameboy first triggers displaying the window at some point during a frame, then hides the window by clearing `LCDCF_WINON`, then the PPU will produce a glitch pixel where the window would have started drawing on that line, under the condition `(WX&7)==7-(SCX&7)`. Windesync-validate is setting `SCX` and `WX` to various test values throughout the frame, and uses the offset and glitched pixels to draw a recognizable image.
@@ -7,6 +10,8 @@ At the time of writing, the only emulators known to emulate this quirk are [BGB]
 
 ## Building
 Prerequisite: some recent version of RGBDS. Under Linux and presumably macOS, just run `./m.sh`. No Makefile, sorry. Maybe one day. Under Windows it should not be too hard to make a `m.bat` file that executes the same commands as `./m.sh`.
+
+If you are just looking for the 
 
 ## Summary of the glitch
 The following applies only to pre-GBC hardware. It may reportedly be dependent on the SoC revision and LCD, although from what I've seen so far this seems unlikely.
@@ -26,7 +31,7 @@ If you are a Gameboy programmer who runs into this glitch, it's recommended to s
 
 ![Star Trek 25th Anniversary, emulated incorrectly](images/startrek-emufail.png) ![Star Trek 25th Anniversary, emulated correctly](images/startrek-emupass.png)
 
-However, *Star Trek 25th Anniversary,* the game that prompted adding support for the glitch in emulators, and making this test ROM, did not find this solution. This game instead elected to modify its graphics to shift some of the graphics by 1 pixel to compensate for the glitch, and live with the fact that there was a black line at the left side of the screen.
+However, the authors of *Star Trek 25th Anniversary,* the game that prompted adding support for the glitch in emulators, and making this test ROM, did not find this solution. This game instead elected to modify its graphics to shift some of the graphics by 1 pixel to compensate for the glitch, and live with the fact that there was a black line at the left side of the screen.
 
 ## Test ROM principle of operation
 ![BGB VRAM viewer showing the raw graphics](images/Screenshot_20221207_120735.png)
@@ -65,7 +70,7 @@ This part of the screen is using the glitched pixels as a drop shadow to the lef
 
 ![Reference, should not trigger, bottom part](images/ref-shouldnot.png)
 
-This part of the screen represents combinations of `SCX` and `WX` where the glitch should not trigger. Not that this checkmark should *not* have a drop on the left side. The "should not trigger" portion should appear correct on any emulators that implements the glitch correctly, as well as on any emulators that don't attempt to implement it at all. This section is included to detect false positives in emulators while implementing the glitch.
+This part of the screen represents combinations of `SCX` and `WX` where the glitch should not trigger. Note that this checkmark should *not* have a drop on the left side. The "should not trigger" portion should appear correct on any emulators that implements the glitch correctly, as well as on any emulators that don't attempt to implement it at all. This section is included to detect false positives in emulators while implementing the glitch.
 
 ### Examples of test failures
 
