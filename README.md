@@ -4,6 +4,9 @@ Small test ROMs and experiments for Gameboy made by nitro2k01. Inspired by [Pino
 ## Building
 Prerequisite: some recent version of RGBDS. Under Linux and presumably macOS, just run `./m.sh`. No Makefile, sorry. Maybe one day. Under Windows it should not be too hard to make a `m.bat` file that executes the same commands as `./m.sh`.
 
+## Download
+If you are just looking for the ROMs, go to [releases](https://github.com/nitro2k01/little-things-gb/releases/).
+
 # List of projects
 
 ## Whichboot.gb (2022)
