@@ -50,7 +50,7 @@ In this example, the `rst $08` instruction will not push `$0002` to the stack as
 
 So, we can finally see what the `halt` bug actually is: it's an inhibition of the automatic incrementation of PC, meaning in this case that the previous value of `PC` would be pushed to the stack.
 
-[^1]: It might seem like a stretch that a call to a `rst` vector would not return. However, a fairly common pattern is to use an `rst` for jump tables, where the return address is `pop`ped from the stack and used as the base address for the jump table immediately following the `rst` instruction. Doing this after a `halt` instruction is likely, though.
+[^1]: It might seem like a stretch that a call to a `rst` vector would not return. However, a fairly common pattern is to use an `rst` for jump tables, where the return address is `pop`ped from the stack and used as the base address for the jump table immediately following the `rst` instruction. Doing this after a `halt` instruction is unlikely, though.
 
 ### The double `halt` bug
 
