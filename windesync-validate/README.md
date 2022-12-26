@@ -22,7 +22,7 @@ When the window is disabled after it has been activated once by a `WY`/`WX` hit,
 * A `WX` hit happens, which requires `0<=WX<=$A6`.
 * The values of `WX` and `SCX` line up in a certain way. You could describe this in different ways. Mathematically, you could describe the condition as `(WX&7)==7-(SCX&7)`. More visually, you could describe it as "if the SCX scroll position would draw the leftmost pixel of a tile on the same pixel as the window would start drawing (if it was enabled) this pixel becomes glitched".
 
-The effect of this glitch is that a pixel that becomes glitched is output as a pixel colored with BG palette entry 0. (That is, the color described by bits 0 and 1 of `BGP`. The rest of the line is delayed and shifted on pixel to the right.
+The effect of this glitch is that a pixel that becomes glitched is output as a pixel colored with BG palette entry 0. (That is, the color described by bits 0 and 1 of `BGP`. The rest of the line is delayed and shifted one pixel to the right.
 
 You can find some more details, as well as a logic analyzer data dumps on [SameBoy issue 278](https://github.com/LIJI32/SameBoy/issues/278).
 
@@ -86,7 +86,7 @@ This image shows an incorrect implementation of the glitch in SameBoy during dev
 
 ### Limitations of the test ROM
 
-One limitation is that it doesn't exhaustively check every combination of `SCX` and `WX`. This would not be possible in a ROM that shows a single static image. Another limitation is that it modifies `SCX` and `WX` in the HBlank period and does not attempt test timing behavior of writing to IO registers close to the point in time where the glitch would happen. Yet another limitation is that this ROM does not other colors than black for the glitch pixel, meaning that an emulator that drew glitch pixels as black instead of the color 0 in BGP would appear to pass.
+One limitation is that it doesn't exhaustively check every combination of `SCX` and `WX`. This would not be possible in a ROM that shows a single static image. Another limitation is that it modifies `SCX` and `WX` in the HBlank period and does not attempt to test timing behavior of writing to IO registers close to the point in time where the glitch would happen. Yet another limitation is that this ROM does not other colors than black for the glitch pixel, meaning that an emulator that drew glitch pixels as black instead of the color 0 in BGP would appear to pass.
 
 ## Version history
 
